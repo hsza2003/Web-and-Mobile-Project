@@ -1,0 +1,2211 @@
+Total pages: 82
+=== PAGE 1 ===
+ 
+ 
+CoreIQ 
+ 
+By 
+ 
+Mohamad Amer Kabalan 
+ 
+Graduation Report Project 
+ 
+Submitted in Partial Fulfillment of the Requirements for the 
+ 
+Degree of Bachelor of Science in Computer Science 
+ 
+Department of Computer Science 
+Faculty of Sciences & Arts 
+ 
+Supervised by:  Prof. /Dr: Zeinab Farhat 
+
+=== PAGE 2 ===
+ 
+2025-2026 
+ 
+ 
+ 
+The Report Defense Committee for (Mohamad)  
+Certifies that this is the approved version of the following report. 
+ 
+APPROVED BY: 
+Supervisor Signature:                       
+(Name typed under the line) 
+ 
+Examiner Signature:                         
+(Name typed under the line) 
+ 
+Examiner Signature:                         
+(Name typed under the line) 
+
+=== PAGE 3 ===
+Acknowledgement 
+ 
+I would like to begin by expressing my heartfelt thanks to my supervisor, Dr. Zeinab Farhat, 
+whose unwavering support, expert guidance, and continuous encouragement played a vital role 
+in the development and completion of my graduation project. Her knowledge and dedication 
+greatly influenced the direction and outcomes of my work. 
+ 
+I’m also grateful to Dr. Ali Raad, Dean of the Faculty, and Dr. Walid Fahes, Head  of the 
+computer science Department, for their leadership and for cultivating an academic environment 
+that empowered and inspired me through my university experience 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+=== PAGE 4 ===
+Abstract 
+This project is a sophisticated and multi-functional mobile and web application that seamlessly 
+integrates advanced nutrition tracking, intelligent workout programming, and holistic lifestyle 
+management into a single unified platform. Developed using React Native for mobile, React for 
+the web dashboard, and a scalable Node.js backend with MongoDB, the platform offers a 
+vertically integrated digital ecosystem that connects all aspects of a user’s physical journey 
+including nutrition, training, and recovery through intuitive and highly responsive interfaces. At 
+the core of the platform lies the concept of Smart Plans, which serve as dynamic AI-adapting 
+schedules combining the characteristics of MyFitnessPal for precision macro-tracking, a 
+dedicated personal trainer for progressive strength programming, and a life coach for habit 
+formation. Each Smart Plan allows users to generate or customize 14 to 90 day routines where 
+meals and workouts are not just logged but proactively scheduled, while the systems Food 
+Intelligence and Smart Fill technologies automate the tedious aspects of data entry. Additionally, 
+the platform integrates a futuristic Command Center for administrators to curate the global 
+exercise and food databases to ensure data integrity across the ecosystem. The systems flexible 
+architecture enables a wide range of use cases including beginners seeking guided 14 day 
+transformations, athletes requiring precise macro-cycle planning, and busy professionals needing 
+efficient and automated daily structures. To further enhance user adherence and motivation, the 
+platform includes a comprehensive Lifestyle module that synchronizes water intake, sleep 
+quality, step counts, and mental well-being to provide a 360 degree view of health performance. 
+In summary, this project is far more than just a calorie counter or a workout log, it is a powerful 
+all-in-one platform designed to build, sustain, and elevate personal fitness through the seamless 
+integration of data analytics, artificial intelligence, and user-centric design. 
+ 
+ 
+ 
+ 
+ 
+=== PAGE 5 ===
+Table of Contents 
+Acknowledgement ................................ ................................ ................................ ........ 3 
+Abstract ................................ ................................ ................................ ....................... 4 
+List of Tables ................................ ................................ ................................ ................. 7 
+List of Figures ................................ ................................ ................................ ............... 8 
+Chapter 1: Introduction and Context ................................ ................................ .............. 9 
+1.1 Objectives .................................................................................................................. 11 
+1.2 Challenges ................................................................................................................. 11 
+1.3 Contributions ............................................................................................................. 12 
+Chapter 2: Literature Review ................................ ................................ ........................ 13 
+2.1 Digital Health Platforms: From Fragmentation to Integration .............................................. 13 
+2.2 Integrated Platform Approach ........................................................................................... 14 
+2.3 Platform Architecture and Technology Choices .................................................................. 14 
+2.4 Addressing Gaps in Existing Platforms ............................................................................... 15 
+2.5 Real-World Application Scenarios ..................................................................................... 16 
+2.6 Contribution to Digital Health Systems .............................................................................. 16 
+Chapter 3: Requirements Analysis ................................ ................................ ............... 17 
+3.1 Functional Requirements .................................................................................................. 17 
+3.2 Non-Functional Requirements .......................................................................................... 18 
+3.3 UML Cases and Scenarios ................................................................................................. 19 
+3.3.1 CoreIQ System UML ....................................................................................................... 30 
+3.4 Data Flow Diagram............................................................................................................ 32 
+3.5 ER Diagram: ...................................................................................................................... 38 
+3.6 User Sequence Diagram .................................................................................................... 46 
+3.7 Admin Sequence Diagram ................................................................................................. 47 
+=== PAGE 6 ===
+Chapter 4: System Design................................ ................................ ............................  48 
+4.1 Introduction ...................................................................................................................... 48 
+4.2 Technologies Used............................................................................................................ 48 
+Web Dashboard (Admin): ........................................................................................................ 50 
+4.3 System Modules and Components .................................................................................... 51 
+Chapter 5: Project Software and Implementation ................................ ..........................  53 
+5.1 Introduction ...................................................................................................................... 53 
+5.2 Frontend: Mobile Application (React Native + Expo)............................................................ 53 
+5.3 Frontend: Web Application (React 19 + Vite) ...................................................................... 55 
+5.4 Backend: Web Services (Node.js + Express) ....................................................................... 56 
+5.5 Backend: Mobile Services (API Layer) ................................................................................. 57 
+5.6 Summary: Data Flow and Integration ................................................................................. 58 
+Chapter 6: Testing Results Samples ................................ ................................ .............. 59 
+6.1 Registration & Onboarding Module .................................................................................... 61 
+6.2 Authentication & Security Module ...................................................................................... 63 
+6.2.1 Password Recovery Flow ............................................................................................ 64 
+6.3 User Mobile Application – Functional Testing & Flow Tables ............................................... 65 
+6.3.1 User Dashboard Page ................................................................................................. 65 
+6.3.2 Smart Plan Wizard ...................................................................................................... 67 
+6.3.3 Active Plan Management Hub ..................................................................................... 68 
+6.3.4 Daily Activity Hub (Meals & Workouts Execution) ......................................................... 70 
+6.4 AI Chat Companion ........................................................................................................... 74 
+6.5 Administration Web Portal ................................................................................................ 76 
+6.5.1 Admin Dashboard & Statistics ..................................................................................... 76 
+6.5.2 User Management Page .............................................................................................. 78 
+6.5.3 Content Moderation Page ........................................................................................... 79 
+=== PAGE 7 ===
+Chapter 7: General Conclusion and Future Recommendations ................................ ...... 80 
+7.1 Future Work ...................................................................................................................... 81 
+References ................................ ................................ ................................ ................. 82 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+List of Tables 
+Table 1: Registration & Verification Use case Table ................................ ...........................  21 
+Table 2: User Login Use Case Table ................................ ................................ ................ 22 
+Table 3: Profile & Lifestyle Management Use Case Table ................................ ................... 23 
+Table 4: Ad-hoc Execution Use Case Table ................................ ................................ ....... 24 
+Table 5: Plan Creation & AI Assistance Use Case Table ................................ ..................... 25 
+Table 6:  Active Plan Management Use Case Table ................................ ............................  26 
+Table 7:  AI Coach Interaction Use Case Table ................................ ................................ .. 27 
+Table 8: Account Settings Use Case Table ................................ ................................ ........ 28 
+Table 9: Admin & Super Admin Management Use Case Table ................................ ............. 29 
+Table 10: User Registration Flow ................................ ................................ ................... 62 
+Table 11:  Email Verification Flow ................................ ................................ ................. 62 
+Table 12: User Login Flow ................................ ................................ ............................  63 
+Table 13: Reset Password Flow ................................ ................................ ..................... 64 
+Table 14: User Dashboard Page ................................ ................................ .................... 65 
+Table 15: User Dashboard ................................ ................................ ............................  66 
+=== PAGE 8 ===
+Table 16: Smart Plan Wizard ................................ ................................ .........................  67 
+Table 17: Active Plan Management Hub Components ................................ .................... 69 
+Table 18: Daily Meals Tracking ................................ ................................ ...................... 71 
+Table 19: Daily Workouts Tracking ................................ ................................ ................. 73 
+Table 20: AI ................................ ................................ ................................ ................. 75 
+Table 21: Admin Dashboard ................................ ................................ .........................  77 
+Table 22: Athletes Directory ................................ ................................ .........................  78 
+Table 23: Workout Library................................ ................................ .............................  79 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+List of Figures 
+Figure 1: App Use Case Diagram ................................ ................................ .................... 31 
+Figure 2: DFD level 0 ................................ ................................ ................................ ... 32 
+Figure 3: DFD level 1 ................................ ................................ ................................ ... 34 
+Figure 4: Entity Relationship Diagram ................................ ................................ ............. 38 
+Figure 5: User Sequence ................................ ................................ ................................  46 
+Figure 6: Admin Sequence ................................ ................................ .............................  47 
+Figure 7: Create Account, Verify Email ................................ ................................ .......... 61 
+Figure 8: Login Screen ................................ ................................ ................................ . 63 
+Figure 9: Forgot Password, Confirm Code, Reset Password ................................ ............ 64 
+Figure 10:  Smart Plan Creation Flow ................................ ................................ ............ 67 
+=== PAGE 9 ===
+Figure 11: Plans Screen ................................ ................................ ...............................  68 
+Figure 12: Meals Screen ................................ ................................ ...............................  70 
+Figure 13: Workouts Screen ................................ ................................ .........................  72 
+Figure 14: AI Screen ................................ ................................ ................................ ..... 74 
+Figure 15: Admin Dashboard ................................ ................................ ........................ 76 
+Figure 16: Athletes Directory ................................ ................................ ........................ 78 
+Figure 17: Workouts Library ................................ ................................ ..........................  79 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Chapter 1: Introduction and Context 
+In recent years, daily life has become more demanding, and people increasingly rely on digital 
+tools to manage their health and lifestyle. However, most existing health and fitness applications 
+focus on only one aspect, such as calorie counting or workout tracking. This often forces users to 
+depend on multiple applications at the same time, making it difficult to maintain consistency and 
+follow a balanced routine that addresses both physical and lifestyle needs. 
+=== PAGE 10 ===
+To overcome this limitation, the CoreIQ platform was developed as a unified solution that brings 
+together nutrition tracking, workout planning, and lifestyle monitoring in one system. The goal 
+of CoreIQ is to simplify the way individuals manage their fitness by providing a single 
+environment where all related activities can be planned and tracked efficiently. 
+CoreIQ allows users to create and follow personalized daily plans that guide their meals, 
+workouts, and recovery habits. Instead of treating these elements separately, the platform 
+connects them within one structured flow, helping users stay organized and focused throughout 
+the day. This approach encourages consistency and supports long-term progress by making 
+health management more practical and accessible. 
+The platform supports a wide range of features, including detailed meal logging with nutritional 
+values, structured workout routines with progressive load tracking, and daily lifestyle monitoring 
+such as hydration and sleep. Users can also track their overall progress and set long-term goals, 
+all within a secure and well-organized system. 
+To support these functionalities, CoreIQ was developed using modern web and mobile 
+technologies. The backend was built using Node.js and Express to handle application logic and 
+provide secure communication between components. MongoDB was used as the database 
+system to store user data efficiently, including fitness records, meal logs, and personal 
+information. 
+On the frontend side, React.js was used to develop the web interface, providing a responsive and 
+interactive user experience. The mobile application was developed using React Native with 
+Expo, allowing the platform to run smoothly on both Android and iOS devices. Communication 
+between the frontend and backend is handled through RESTful APIs, enabling real-time updates 
+and synchronization across devices. 
+Overall, CoreIQ was designed as an accessible and flexible platform that adapts to different 
+devices and user needs. By combining multiple health-related functions into a single system, the 
+platform aims to help users manage their fitness more effectively while maintaining simplicity, 
+security, and ease of use. 
+=== PAGE 11 ===
+1.1 Objectives 
+The primary goal of this project is to design and implement a multi-functional digital platform 
+that enables: 
+• Design a planning mechanism that enables users to generate structured daily 
+routines combining nutrition and physical training activities. 
+• Develop reliable and precise tracking functionalities for meals and workouts 
+in order to ensure accurate data collection and consistency in user logging 
+behavior. 
+• Support customizable transformation programs ranging from 14 to 90 days, 
+incorporating progress evaluation mechanisms and goal-oriented tracking. 
+• Establish a data-driven progress evaluation system that promotes long-term 
+user adherence and consistency through measurable performance indicators. 
+• Provide configurable system options that accommodate diverse dietary 
+preferences and training methodologies within a flexible framework. 
+• Design an administrative management interface that allows authorized 
+moderators to maintain and control shared food and exercise data resources in 
+a centralized manner. 
+• Ensure cross-platform usability by delivering a consistent and responsive user 
+experience across both web-based and mobile environments. 
+ 
+1.2 Challenges 
+The development of the CoreIQ platform involved several technical and structural challenges, 
+primarily related to system integration, data management, and usability. The main challenges 
+encountered during development include: 
+• Integrating multiple functional domains into a single system, including 
+nutrition tracking, workout programming, lifestyle monitoring, and progress 
+analytics, while maintaining system consistency and performance. 
+=== PAGE 12 ===
+ 
+• Designing a flexible plan management architecture capable of supporting 
+variable program durations and dynamic daily adjustments without 
+compromising data accuracy or system stability. 
+ 
+• Managing complex data relationships between active plans, daily activity 
+logs, and historical records, requiring a scalable database structure capable of 
+handling frequent updates efficiently. 
+ 
+ 
+• Developing a user interface that balances functionality and usability, ensuring 
+accessibility for users with varying levels of fitness knowledge while 
+maintaining a clean and intuitive design. 
+ 
+• Implementing intelligent workout assistance mechanisms that estimate 
+performance parameters based on historical user data, requiring careful logic 
+design and reliable data analysis. 
+ 
+ 
+• Ensuring real-time synchronization across web and mobile platforms so that 
+user actions and updates are reflected consistently across devices. 
+1.3 Contributions 
+This project contributes to the field of health and fitness technology by presenting a unified 
+digital platform that integrates nutrition management, workout planning, and lifestyle 
+monitoring within a single system. Unlike existing solutions that focus on isolated 
+functionalities, the proposed platform offers a comprehensive and structured approach to 
+personal fitness management. 
+ 
+The main contributions of this project include: 
+=== PAGE 13 ===
+• The design of an integrated system architecture that combines multiple health-related 
+domains into a single, cohesive platform. 
+• The implementation of automated assistance mechanisms that reduce manual data 
+entry and promote consistent user engagement. 
+• The provision of flexible customization options that allow users to adapt fitness 
+routines according to individual goals and preferences. 
+• The development of a centralized data management approach that enables users to 
+track long-term progress while maintaining data privacy and security. 
+• The creation of a scalable foundation that allows for future system expansion, 
+including advanced analytics, intelligent coaching features, and external device 
+integration. 
+Through these contributions, the project demonstrates how a unified digital approach can 
+enhance the effectiveness, usability, and sustainability of modern fitness and lifestyle 
+management systems. 
+Chapter 2: Literature Review 
+This chapter reviews existing digital health and fitness platforms that support nutrition tracking, 
+physical training, and lifestyle monitoring. The objective is to analyze how current solutions 
+address these domains individually or collectively, identify limitations in existing approaches, 
+and position the proposed CoreIQ platform within the broader context of digital health systems. 
+The review highlights a general trend of functional fragmentation in current tools and discusses 
+how integrated platforms attempt to overcome this limitation. 
+2.1 Digital Health Platforms: From Fragmentation to Integration 
+Nutrition-Focused Platforms 
+MyFitnessPal is one of the most widely used nutrition tracking applications worldwide and 
+provides access to a large user-generated food database. The platform allows users to log meals 
+and monitor caloric and macronutrient intake with considerable detail. However, its support for 
+structured physical training is limited, as exercise is typically represented only as estimated 
+energy expenditure rather than as part of a progressive training program. As a result, users 
+=== PAGE 14 ===
+seeking structured workout planning often rely on additional applications, leading to fragmented 
+data management and reduced analytical insight [1]. 
+Workout-Centered Platforms 
+Applications such as Strong and Heavy focus primarily on resistance training and workout 
+logging. These platforms offer effective tools for recording sets, repetitions, and training volume, 
+making them suitable for strength-focused users. Despite their strengths in workout tracking, 
+they generally lack integrated nutrition management, requiring users to manage dietary planning 
+separately. This separation limits the ability to analyze the relationship between training load and 
+nutritional intake within a single system [2]. 
+Traditional Coaching Approaches 
+In the MENA region, and particularly in Lebanon, fitness and nutrition coaching frequently relies 
+on manual or semi-digital methods such as messaging applications, static documents, and 
+spreadsheets. While these approaches may offer personalization, they typically lack real-time 
+interaction, automated adaptation, and systematic progress tracking. The absence of integrated 
+data collection reduces their effectiveness for long-term monitoring and dynamic plan adjustment 
+[3]. 
+2.2 Integrated Platform Approach 
+To address the limitations of fragmented fitness tools, the CoreIQ platform was developed as an 
+integrated digital system that combines nutrition management, workout planning, and lifestyle 
+monitoring within a unified structure. The platform introduces structured daily plans that 
+organize meals, training sessions, and recovery metrics into a single workflow. This approach 
+enables users to interact with multiple health-related components without switching between 
+separate applications, supporting consistency and centralized data analysis. 
+2.3 Platform Architecture and Technology Choices 
+The CoreIQ platform adopts a modular architecture designed to support scalability, flexibility, 
+and cross-platform synchronization. The backend layer is responsible for handling business 
+logic, user authentication, and data exchange through structured APIs. A document-oriented 
+=== PAGE 15 ===
+database model was selected to accommodate complex and nested data structures such as daily 
+plans, workout sessions, and nutritional logs. 
+On the frontend, the platform provides both web-based and mobile interfaces to ensure 
+accessibility across devices. This dual-interface approach allows users to perform detailed 
+planning tasks on larger screens while maintaining the ability to log activities and monitor 
+progress through mobile devices. A unified synchronization layer ensures data consistency 
+between platforms in real time. 
+ 
+2.4 Addressing Gaps in Existing Platforms 
+An analysis of existing digital fitness solutions reveals several recurring limitations that reduce 
+their effectiveness in supporting long-term adherence: 
+• Limited functional integration: Most platforms specialize in either nutrition or 
+training, requiring users to manually correlate data across multiple systems. 
+• Static planning models: Many tools rely on fixed plans that do not adapt to 
+schedule changes or performance variations. 
+• Data accuracy concerns: Crowdsourced databases often contain inconsistent or 
+inaccurate entries, affecting the reliability of nutritional analysis. 
+• Minimal lifestyle context: Sleep quality, hydration, and mental well-being are 
+frequently excluded despite their influence on physical performance. 
+ 
+The CoreIQ platform was designed to address these gaps by integrating multiple health domains 
+into a single system, supporting dynamic plan modification, and maintaining structured and 
+curated data management. 
+ 
+=== PAGE 16 ===
+2.5 Real-World Application Scenarios 
+Integrated fitness platforms are particularly valuable in real-world scenarios where users require 
+flexibility and efficiency. For example, individuals pursuing weight loss can benefit from 
+structured calorie management combined with adaptive training schedules. Strength-focused 
+users can track long-term performance trends through progressive training records, while 
+individuals with limited time availability can maintain consistency through automated logging 
+features. 
+In practical use, a user may plan a short-term fitness program using a web interface and 
+subsequently execute and log daily activities using a mobile device, with all data synchronized 
+automatically across platforms. This workflow illustrates the advantages of unified system 
+design in supporting consistent engagement. 
+ 
+2.6 Contribution to Digital Health Systems 
+The CoreIQ platform contributes to digital health technology by demonstrating how multiple 
+fitness-related domains can be integrated into a single, structured system. Its key contributions 
+include: 
+• A unified architecture that consolidates nutrition tracking, workout planning, and 
+lifestyle monitoring. 
+ 
+• A structured data model that supports long-term progress analysis and 
+consistency tracking. 
+ 
+• A scalable foundation capable of supporting future extensions such as advanced 
+analytics or external device integration. 
+ 
+Through this integrated approach, the platform illustrates how digital systems can move beyond 
+isolated tracking tools toward comprehensive health management solutions. 
+=== PAGE 17 ===
+ 
+Chapter 3: Requirements Analysis 
+ 
+This chapter defines the functional and non-functional requirements of the proposed platform. It 
+outlines the system capabilities required to support integrated nutrition, training, and lifestyle 
+management, as well as the quality attributes that ensure reliability, security, and usability. The 
+chapter also identifies the primary user roles and describes how the system adapts to different 
+usage contexts across web and mobile environments. 
+ 
+3.1 Functional Requirements 
+The platform is an integrated digital system accessible through both web and mobile 
+applications. It supports two primary user roles: administrative users and standard users. Upon 
+authentication, users are presented with a personalized dashboard that provides access to system 
+functionalities based on their role and usage context. 
+The core functional requirements of the system are as follows: 
+• User Authentication and Access Control: 
+The system shall provide a secure authentication mechanism that supports user 
+registration, login, and session management across multiple devices. 
+• Plan Generation and Management: 
+The system shall enable users to generate structured fitness plans that combine nutrition 
+targets and workout schedules. These plans shall support variable durations ranging from 
+14 to 90 days and allow controlled modification throughout the program lifecycle. 
+• Nutrition Tracking: 
+The system shall allow users to record daily meals using a centralized food database. 
+Nutritional information, including macronutrient values, shall be automatically calculated 
+and aggregated for daily and long-term analysis. 
+=== PAGE 18 ===
+• Workout Tracking and Execution: 
+The system shall support structured workout logging, including the recording of 
+exercises, sets, repetitions, rest intervals, and training volume. Performance data shall be 
+stored to support historical analysis and progression tracking. 
+• Assisted Workout Logging: 
+The system shall provide automated assistance mechanisms that suggest workout 
+parameters based on previously recorded user performance, reducing manual input while 
+maintaining accuracy. 
+• Lifestyle Monitoring: 
+The system shall support the tracking of lifestyle-related metrics such as sleep duration, 
+hydration levels, daily step count, and self-reported well-being indicators. 
+• User Profile and Goal Management: 
+The system shall allow users to manage personal attributes such as age, height, and 
+weight, as well as fitness objectives. Changes to these parameters shall trigger automatic 
+recalculation of relevant system targets. 
+• Administrative Data Management: 
+The system shall provide administrative users with tools to manage and verify shared 
+data resources, including food items and exercise definitions, ensuring consistency and 
+accuracy across the platform. 
+• Context-Aware User Interfaces: 
+The system shall adapt its interface behavior based on the user’s device, prioritizing 
+planning and data visualization on web platforms and activity logging on mobile devices. 
+3.2 Non-Functional Requirements 
+In addition to functional capabilities, the platform must satisfy several non-functional 
+requirements to ensure performance, security, and overall system quality. 
+• Scalability: 
+The system shall be capable of supporting a growing number of users and data records 
+=== PAGE 19 ===
+without degradation in performance. The architecture shall allow for horizontal expansion 
+to accommodate increased demand. 
+• Performance: 
+The system shall provide responsive interaction for core operations such as data retrieval, 
+plan loading, and activity logging. Mobile functionality shall support temporary offline 
+operation with deferred data synchronization. 
+• Usability: 
+The system shall be designed to support users with varying levels of technical and fitness 
+experience. Interfaces shall prioritize clarity, consistency, and ease of navigation across 
+devices. 
+• Security and Privacy: 
+The system shall enforce strict security measures to protect personal health data. This 
+includes secure authentication mechanisms, encrypted data transmission, and role-based 
+access control. User data shall remain private and accessible only to authorized entities. 
+• Responsiveness and Synchronization: 
+The system shall maintain consistent data synchronization between web and mobile 
+platforms, ensuring that updates performed on one device are reflected across all 
+connected environments. 
+• Data Integrity: 
+The system shall enforce validation and consistency checks on all critical operations, 
+including nutritional calculations, plan progression, and activity logging, to prevent 
+inaccurate or misleading data representations. 
+ 
+3.3 UML Cases and Scenarios 
+This section presents a detailed description of the primary UML use cases associated with the 
+CoreIQ platform. The use cases are derived from an analysis of the implemented system 
+functionalities and illustrate how different user roles interact with the system to achieve specific 
+=== PAGE 20 ===
+goals. Each use case defines the involved actors, required preconditions, and the normal flow of 
+events. 
+The platform supports both regular users and administrative users, each with distinct 
+responsibilities and access privileges. The following use cases represent the most critical 
+interactions within the system. 
+ 
+Use-Case Name 
+ 
+ 
+User Registration and Verification 
+Use-Case ID UC-001 
+Priority High 
+Primary Actors New Users 
+Description This use case describes the process through 
+which a new user creates an account and 
+verifies ownership of a valid email address 
+before accessing the system. 
+Preconditions - Internet Connectivity required 
+- The email address is not already registered  
+Typical Course of Events Actor Action System Response 
+1. User taps 
+"Register" on 
+Welcome Screen. 
+System displays 
+Registration Form. 
+2. User enters Full 
+Name, Username, 
+Email, Birthdate, 
+Gender, and 
+Password. 
+System verifies 
+password length (8+ 
+chars) and match. 
+3. User taps 
+“Register” 
+System validates 
+inputs and creates 
+pending account. 
+=== PAGE 21 ===
+4. User receives 
+Email Code. 
+System navigates to 
+Verification Screen. 
+5. User enters 6-
+digit code. 
+System activates 
+account and navigates 
+to Login Screen. 
+Table 1: Registration & Verification Use case Table 
+ 
+ 
+Use-Case Name 
+ 
+ 
+User Login & Authentication 
+Use-Case ID UC-002 
+Priority High 
+Primary Actors Registered Users 
+Description This use case defines the secure 
+authentication process that allows registered 
+users to access the platform. 
+Preconditions - Internet connectivity required. 
+- User must have a verified account. 
+- Valid credentials. 
+Typical Course of Events Actor Action System Response 
+1. User launches 
+Mobile App. 
+System displays 
+Login screen. 
+2. User enters Email 
+and Password. 
+System validates 
+format constraints. 
+3. User taps “Login” System authenticates 
+against backend and 
+generates session 
+token. 
+=== PAGE 22 ===
+4. User views 
+Dashboard. 
+System loads 
+personalized data 
+Table 2: User Login Use Case Table 
+ 
+Use-Case Name 
+ 
+ 
+Profile Setup & Daily Tracking 
+Use-Case ID C-003 
+Priority High 
+Primary Actors Users 
+Description 2. User toggles "Water Reminders" and 
+"Wellness Notifications". 
+Preconditions - User logged in. 
+- Stats (Weight/Height) not yet set. 
+Typical Course of Events Actor Action System Response 
+1. User navigates to 
+Settings and selects 
+"Imperial Units" & 
+"Light Mode". 
+System updates UI 
+theme and unit labels 
+instantly. 
+2. User update his 
+profile picture 
+System updates 
+global avatar. 
+3. User toggles 
+"Water Reminders" 
+and "Wellness 
+Notifications". 
+System schedules 
+local push 
+notifications. 
+4. User enters 
+Weight, Height, and 
+Goal on Dashboard. 
+System calculates 
+TDEE and sets daily 
+targets  
+=== PAGE 23 ===
+5. User logs water 
+intake, sleep 
+duration, and mood. 
+System stores data 
+and updates daily 
+summary 
+visualizations. 
+ 
+Table 3: Profile & Lifestyle Management Use Case Table 
+ 
+Use-Case Name 
+ 
+ 
+Flexible Meal & Workout Logging 
+Use-Case ID C-004 
+Priority Medium 
+Primary Actors Regular Users 
+Description Logging activities without a predefined plan 
+("Freestyle Mode"). 
+Preconditions - No active plan required. 
+Typical Course of Events Actor Action System Response 
+1. User browses 
+Meals Screen and 
+taps a Breakfast 
+item. 
+System adds item to 
+daily log and updates 
+consumed calories. 
+2. User taps on a 
+meal card. 
+System marks meal 
+as "Eaten" and 
+updates consistency 
+streak. 
+3. User searches for 
+a custom Workout 
+but doesn't find it. 
+System offers "Add 
+Custom Workout" 
+form. 
+=== PAGE 24 ===
+4. User submits new 
+workout. 
+System sends request 
+to Admin for 
+approval before 
+publishing. 
+Table 4: Ad-hoc Execution Use Case Table 
+ 
+ 
+Use-Case Name 
+ 
+ 
+System Plan Generation & AI Editing 
+Use-Case ID C-005 
+Priority High 
+Primary Actors Regular Users 
+Description Generating a structured plan via system 
+templates and refining it with AI assistance. 
+Preconditions - User profile set. 
+Typical Course of Events Actor Action System Response 
+1. User generates a 
+plan using the Rule-
+Based Wizard. 
+System prompts for 
+Duration (14, 30, 60, 
+90 days) and Start 
+Date. 
+2. User selects 
+"Chain Plan" or a 
+specific "Custom 
+Date". 
+System schedules the 
+new plan to begin 
+immediately after the 
+current one ends or 
+on the selected date. 
+3. User asks AI: 
+"Swap all fish meals 
+for chicken" 
+AI Agent modifies 
+the plan structure 
+safely while keeping 
+the core progression. 
+=== PAGE 25 ===
+4. User taps 
+"Activate Plan". 
+System locks plan as 
+active and populates 
+the daily 
+Meals/Workout 
+screens. 
+Table 5: Plan Creation & AI Assistance Use Case Table 
+ 
+ 
+Use-Case Name 
+ 
+ 
+Executing an Active Plan 
+Use-Case ID C-006 
+Priority High 
+Primary Actors Regular Users 
+Description Daily execution and modification of the 
+active plan via specialized screens. 
+Preconditions - Plan is Active. 
+Typical Course of Events Actor Action System Response 
+1. User navigates to 
+"Meals" or 
+"Workouts" screen. 
+System loads the 
+specific pre-planned 
+items for the current 
+date. 
+2. User taps an item 
+(Meal or Workout) 
+to view details. 
+System displays 
+macros/exercises and 
+offers "Mark 
+Complete" or "Edit". 
+3. User taps "Edit" 
+to swap a meal or 
+change sets. 
+System updates the 
+active plan for that 
+specific day instantly. 
+=== PAGE 26 ===
+4. User marks item 
+as "Complete". 
+System update daily 
+progress stats and 
+subtracts 
+calories/adds burn  
+Table 6:  Active Plan Management Use Case Table 
+ 
+ 
+ 
+Use-Case Name 
+ 
+ 
+AI Coaching & Navigation 
+Use-Case ID C-007 
+Priority High 
+Primary Actors All Users 
+Description Direct interaction with the AI via chat for 
+guidance, motivation, and system 
+navigation. 
+Preconditions - Internet connectivity required. 
+Typical Course of Events Actor Action System Response 
+1. User opens "AI 
+Coach" screen. 
+System displays chat 
+history and 
+suggestion chips  
+2. User asks: "How 
+do I perform a 
+deadlift safely?". 
+System provides a 
+text-based guide and 
+safety tips. 
+3. User asks: "I need 
+a new diet plan". 
+System recognizes 
+intent and navigates 
+User explicitly to the 
+=== PAGE 27 ===
+Plan Creation 
+Wizard. 
+4. User asks: "Am I 
+on track this 
+week?". 
+System analyzes 
+recent stats and 
+provides a 
+motivational 
+summary. 
+Table 7:  AI Coach Interaction Use Case Table 
+ 
+ 
+ 
+Use-Case Name 
+ 
+ 
+Account Security & Access Recovery 
+Use-Case ID C-008 
+Priority Critical 
+Primary Actors All Users 
+Description Managing secure access, including password 
+updates and recovery flows both pre and 
+post-login. 
+Preconditions - Internet connectivity 
+- Authenticated session 
+Typical Course of Events Actor Action System Response 
+1. User navigates to 
+Settings > Account. 
+System displays 
+email and security 
+options. 
+2. User chooses 
+"Change Password". 
+System prompts for 
+old and new 
+password. 
+=== PAGE 28 ===
+3.  User taps "Forgot 
+Password?" within 
+the Change 
+Password screen. 
+System sends 
+verification code to 
+the registered email. 
+4.  User enters code 
+and new password. 
+System updates 
+credentials securely. 
+5. User edits his info System validates 
+availability and 
+updates the official 
+profile. 
+Table 8: Account Settings Use Case Table 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Use-Case Name 
+ 
+ 
+System Administration & Content 
+Management 
+Use-Case ID C-009 
+Priority High 
+Primary Actors Super Admin, Admins 
+Description Management of platform content, user base, 
+and administrative team structure. 
+Preconditions - Internet connectivity required. 
+- Admin privileges required 
+=== PAGE 29 ===
+Typical Course of Events Actor Action System Response 
+1. Super Admin logs 
+into Web 
+Dashboard. 
+System loads 
+"Command Center" 
+with team statistics. 
+2. Super Admin 
+clicks "Add 
+Admin". 
+System creates new 
+admin account with 
+specified role. 
+3. Admin navigates 
+to "Meals Manager" 
+or "Workouts 
+Manager". 
+System lists the 
+complete global 
+content library. 
+4. Admin creates, 
+edits, or deletes a 
+Meal/Workout item 
+System updates the 
+database and reflects 
+changes in the 
+Mobile App. 
+5. Admin approves a 
+pending user 
+submission. 
+System verifies 
+content and publishes 
+it to the public 
+library. 
+Table 9: Admin & Super Admin Management Use Case Table 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+=== PAGE 30 ===
+3.3.1 CoreIQ System UML 
+The UML Use Case Diagram for the CoreIQ system illustrates the interactions between the 
+platform and its three primary actors: User, Admin, and Super Admin. All actors access the 
+system through a unified authentication mechanism, after which system functionality is made 
+available according to role-based permissions. 
+The User represents the primary system actor and interacts with the platform to manage personal 
+fitness, nutrition, and lifestyle activities. User interactions include profile configuration, plan 
+generation, activity execution, and progress monitoring. Users are able to generate structured 
+fitness plans with defined durations, modify plan content when necessary, and record daily 
+activities such as meals, workouts, and lifestyle metrics. The system also provides assisted 
+guidance to support user decision-making and navigation. 
+The Admin actor is responsible for maintaining the integrity and quality of shared system data. 
+Administrative interactions include managing global food and exercise records, reviewing user-
+submitted content, and ensuring that published data meets platform standards. Through these 
+interactions, the Admin supports data accuracy and consistency across the system. 
+The Super Admin represents the highest-privilege actor within the system. In addition to all 
+administrative capabilities, the Super Admin manages the administrative hierarchy itself. This 
+includes creating and deactivating administrator accounts, assigning roles, and controlling access 
+permissions. These responsibilities ensure controlled governance, operational stability, and 
+secure system administration. 
+The use case diagram reflects a role-based access model in which each actor interacts with a 
+specific subset of system functionalities. This structure ensures separation of responsibilities, 
+controlled access to sensitive operations, and a clear representation of system behavior from an 
+architectural perspective. 
+ 
+ 
+ 
+ 
+=== PAGE 31 ===
+ 
+Figure 1: App Use Case Diagram 
+ 
+ 
+
+=== PAGE 32 ===
+3.4 Data Flow Diagram 
+The following Level 0 Data Flow Diagram (DFD), also referred to as the Context Diagram, 
+represents the high-level operational context of the CoreIQ System. This diagram outlines the 
+system’s primary external entities and their major interactions with the central application. It 
+provides a top-level view of how data flows between CoreIQ and its surrounding stakeholders, 
+including mobile users, administrative users, and external AI and email services. 
+ 
+ 
+Figure 2: DFD level 0 
+ 
+Description: 
+At the context level, CoreIQ functions as a centralized processing system that coordinates user 
+activity tracking, administrative content management, and intelligent coaching services. This 
+diagram highlights the main actors interacting with the system and the nature of the data 
+exchanged, illustrating how user inputs are processed into personalized outputs and how 
+administrative actions support platform governance. Internal system processes and data storage 
+mechanisms are intentionally abstracted at this level. 
+ 
+ 
+
+=== PAGE 33 ===
+External Entities and Their Interactions  
+ 
+o User (Mobile App) 
+The User represents individuals accessing CoreIQ through the mobile 
+application. 
+• Sends to CoreIQ: Profile data (e.g., weight, goals), activity logs 
+(meals, workouts), and AI prompts. 
+• Receives: Login results, room details, message/notification updates,  
+product and order data, and payment status confirmations. 
+o Admins & Super Admins (Web Dashboard) 
+Administrative users interact with the system through a web-based dashboard 
+to manage platform content and oversee system operations. 
+• Sends to CoreIQ: 
+o Verified nutrition and workout content 
+o Administrative management actions (including admin account 
+management) 
+• Receives from CoreIQ: 
+o Analytics and performance reports 
+o Audit logs 
+o Team and system statistics 
+o AI Service (Google / Groq) 
+The AI Service represents an external intelligence provider used to enhance 
+personalization and automation within CoreIQ. 
+• Receives from CoreIQ: 
+o Anonymized user context 
+=== PAGE 34 ===
+o Structured prompts related to plan generation and coaching 
+• Sends to CoreIQ: 
+o Generated workout and nutrition plans 
+o Chat responses, guidance, and intelligent suggestions 
+o Email Service (Nodemailer) 
+The Email Service acts as an external communication channel responsible for 
+delivering system-generated emails. 
+• Receives from CoreIQ: 
+o Account verification requests 
+o Password reset and security-related notifications 
+• Sends to CoreIQ: 
+o Email delivery status confirmations 
+ 
+Figure 3: DFD level 1 
+This DFD Level 1 breaks down the CoreIQ system into its key processes and illustrates their 
+interactions, reflecting the complete user journey across authentication, daily tracking, intelligent 
+planning, AI assistance, and administrative control. 
+
+=== PAGE 35 ===
+• Authentication & Profile Management 
+This module handles user registration and login using local credentials (email and password). It 
+is responsible for managing user profile information and initial system configuration. 
+Added Feature – Email Verification by Code: 
+Upon registration or password recovery, a verification code is sent to the user’s registered email 
+address. The user must enter this code to activate the account or reset credentials. The code is 
+delivered using the Email Service to ensure secure account validation. 
+Added Feature – Unit Preferences: 
+Users can choose between Metric (kg/cm) and Imperial (lb/in) measurement systems. These 
+preferences are stored and applied consistently across all platform features. 
+Data Storage: 
+All authentication data, physical attributes (height, weight, activity level), and user preferences 
+are stored in the User DB (D1). 
+ 
+• Daily Activity & Lifestyle Tracking 
+This process manages the user’s daily interactions with the system. It allows users to browse 
+meals and workouts, log meal consumption, execute workouts, and track lifestyle metrics such as 
+sleep duration, mood, and water intake. 
+Added Feature – Custom Workout Submission: 
+If a workout does not exist in the system, users may submit a custom workout request. These 
+submissions are stored as Pending in the Content Library until reviewed by an administrator. 
+Data Storage: 
+All daily activity records, including meal logs, workout logs, and lifestyle data, are saved in the 
+Daily Logs DB (D4) for historical tracking and progress analysis. 
+ 
+• Smart Plan System 
+=== PAGE 36 ===
+This module represents the core planning engine of CoreIQ. It enables users to generate 
+structured nutrition and training plans using a system-driven wizard based on user goals, activity 
+level, and approved templates. 
+Added Feature – AI Command Integration: 
+While the system generates plans using predefined logic, users can issue natural language 
+commands (e.g., “swap this meal” or “add two sets”). These commands are sent to the AI 
+Service, which returns structured JSON instructions that are safely applied by the system. 
+Data Storage: 
+All active and historical plans are stored in the Plans DB (D3). 
+ 
+• AI Chat Companion 
+This module provides a conversational interface for general fitness guidance, motivation, and 
+system navigation. 
+Added Feature – Intelligent Redirection: 
+If a user requests plan creation through the chat interface, the system redirects the user to the 
+Smart Plan System instead of generating complex plans directly within the chat. 
+Data Storage: 
+Conversation history and AI interactions may be stored in the Daily Logs DB (D4) for continuity 
+and context. 
+ 
+• Administration & Moderation 
+This module provides administrators with advanced management tools via the web dashboard. 
+• Super Admin: 
+Has exclusive permissions to create, view, and remove administrator accounts. 
+• Admin: 
+Manages the global content library (meals and workouts), reviews pending user 
+submissions, and approves or rejects content to maintain data accuracy and quality. 
+=== PAGE 37 ===
+Data Storage: 
+Administrative actions update the Content Library (D2) and user-related actions affect the User 
+DB (D1). Usage statistics are derived from the Daily Logs DB (D4). 
+ 
+● External Gateways & Services 
+• Email Service: 
+Used to send verification codes and password reset tokens during authentication 
+workflows. 
+• AI Service: 
+Provides natural language processing for the AI Chat Companion and smart plan editing 
+commands. 
+ 
+● Data Stores (Databases) 
+• User DB (D1): User accounts, profiles, preferences, and authentication data. 
+• Content Library (D2): Approved and pending meals and workouts. 
+• Plans DB (D3): Active and historical nutrition and training plans. 
+• Daily Logs DB (D4): Meal consumption, workout execution, lifestyle metrics, and 
+interaction history. 
+=== PAGE 38 ===
+3.5 ER Diagram: 
+ 
+Figure 4: Entity Relationship Diagram 
+
+=== PAGE 39 ===
+ 
+Detailed Description and Breakdown: 
+This Entity-Relationship Diagram (ERD) illustrates the logical structure of the CoreIQ 
+platform’s data, representing how different pieces of information (entities) are stored and 
+interconnected. The system uses a MongoDB NoSQL database with 16 collections, organized 
+to support an intelligent health, nutrition, and fitness tracking platform. 
+Although MongoDB is a non-relational database, this ERD adopts a relational modeling 
+convention to clearly visualize data entities, reference-based relationships (ObjectId references), 
+and cardinalities, similar to traditional ER diagrams. 
+ 
+1. Entities (Collections) 
+The system is composed of 16 primary entities, each representing a distinct collection of data: 
+User & Authentication Domain: 
+● users: Represents individual user accounts in the platform. 
+○ Attributes: _id (PK), fullName, username, email, password, birthDate, gender, 
+profilePhoto, emailVerified, weight, height, activityLevel, goalWeight, targetCalories, 
+targetProtein, targetCarbs, targetFats, createdAt, updatedAt. 
+● user_preferences: Stores application configuration and user-specific settings. 
+○ Attributes: _id (PK), userId (Ref), theme, units, waterRemindersEnabled, 
+wellnessRemindersEnabled, createdAt, updatedAt. 
+● email_verification_tokens: Handles email verification during account registration. 
+○ Attributes: _id (PK), userId (Ref), token, email, expiresAt, used, createdAt 
+● password_reset_tokens: Manages password recovery functionality. 
+○ Attributes: _id (Primary Key), userId (Ref), token, email, used. 
+ 
+=== PAGE 40 ===
+Content Library Domain: 
+● foods: Global database of nutrition items. 
+○ Attributes: _id (PK), name, description, category, nutrients (Object), servings (Array), 
+baseQuantity (Object), mealTypes (Array), createdAt, updatedAt. 
+● workouts: Represents the global database of verified exercises.  
+○ Attributes: _id (PK), name, description, category, muscle_group, equipment, createdAt, 
+updatedAt. 
+● food_submissions: Tracks user-submitted food items pending administrative review. 
+○ Attributes:_id (PK), submittedBy (Ref), name, description, category, nutrients, 
+servings, status, reviewedBy (Ref), createdAt, updatedAt, reviewedAt. 
+● workout_submissions: User-submitted workouts pending review. 
+○ Attributes:_id (PK), submittedBy (Ref), name, description, category, muscle_group, 
+equipment, status, reviewedBy (Ref), rejectionReason, createdAt, updatedAt, 
+reviewedAt. 
+● food_favorites: User-Saved food items 
+○ Attributes:_id (PK), userId (Ref), foodId (Ref), createdAt, updatedAt. 
+Plan & Activity Domain: 
+● plans: Generated 14-90 day schedules. 
+○ Attributes _id (PK), userId (Ref), name, duration, startDate, endDate, status, createdBy, 
+metadata (Object), progress (Object), mealPlan (Array), workoutPlan (Array), createdAt, 
+updatedAt. 
+● meals: Stores daily food consumption history. 
+○ Attributes _id (PK), userId (Ref), planId (Ref), foodId (Ref ), date, mealType, name, 
+brand, quantity, unit, calories, protein, carbs, fats, isCompleted, planDay, createdAt, 
+updatedAt. 
+=== PAGE 41 ===
+ 
+● workout_entries: Stores Daily workout execution history 
+○ Attributes _id (PK), userId (Ref), planId (Ref), workoutId (Ref ), date, workoutType, 
+name, description, muscle_group, sets (Array), minutes, caloriesBurned, isCompleted, 
+planDay, createdAt, updatedAt. 
+● daily_stats: Monitors daily biometric and lifestyle metrics. 
+○ Attributes: _id (PK), userId (Ref), date, water, sleep, mental, walking, weight, height, 
+activityLevel, goalWeight, targetCalories, targetProtein, targetCarbs, targetFats, 
+caloriesBurnedWorkouts, caloriesBurnedSteps, totalCaloriesBurned, 
+workoutsCompleted, workoutsTotal, createdAt, updatedAt. 
+Admin & System Domain: 
+● admins: Represents administrative accounts with role-based permissions. 
+○ Attributes: _id (PK), username, email, password, role, isActive, createdBy (Ref), 
+createdAt, updatedAt. 
+● audit_logs: Stores system-wide and administrative activity records. 
+○ Attributes: _id (PK) , action, actorType, actorId (Ref), actorName, targetType, targetId, 
+details, metadata (Object), createdAt, updatedAt. 
+● ai_conversations: Stores AI chat interaction history. 
+○ Attributes: _id (PK), userId (Ref), title, messages (Array), createdAt, updatedAt 
+2. Relationships and Cardinalities 
+User Relationships: 
+● users → user_preferences (One-to-One) 
+Ref: user_preferences.userId → users._id 
+● users → plans (One-to-Many) 
+Ref: plans.userId → users._id 
+=== PAGE 42 ===
+● users → meals (One-to-Many) 
+Ref: meals.userId → users._id 
+● users → workout_entries (One-to-Many) 
+Ref: workout_entries.userId → users._id 
+● users → daily_stats (One-to-Many) 
+Ref: daily_stats.userId → users._id 
+● users → ai_conversations (One-to-Many) 
+Ref: ai_conversations.userId → users._id 
+● users → food_submissions (One-to-Many) 
+Ref: food_submissions.submittedBy → users._id 
+● users → workout_submissions (One-to-Many) 
+Ref: workout_submissions.submittedBy → users._id 
+● users → food_favorites (One-to-Many) 
+Ref: food_favorites.userId → users._id 
+ 
+Admin Relationships: 
+● admins → food_submissions (One-to-Many) 
+Ref: food_submissions.reviewedBy → admins._id 
+● admins → workout_submissions (One-to-Many) 
+Ref: workout_submissions.reviewedBy → admins._id 
+● admins → audit_logs (One-to-Many, polymorphic) 
+Ref: audit_logs.actorId → admins._id 
+● admins → admins (One-to-Many, self-reference) 
+Ref: admins.createdBy → admins._id 
+ 
+ 
+=== PAGE 43 ===
+Content & Plan Relationships 
+● plans → meals (One-to-Many) 
+Ref: meals.planId → plans._id 
+● plans → workout_entries (One-to-Many) 
+Ref: workout_entries.planId → plans._id 
+● foods → meals (One-to-Many) 
+Ref: meals.foodId → foods._id 
+● workouts → workout_entries (One-to-Many) 
+Ref: workout_entries.workoutId → workouts._id 
+ 
+3. Polymorphic References 
+Several fields in the CoreIQ schema support polymorphic or flexible referencing, allowing a 
+single collection to associate with multiple entity types or represent hierarchical/self-referencing 
+relationships. 
+● audit_logs (Polymorphic Actor Reference) 
+The audit_logs collection uses a polymorphic reference to track actions performed by different 
+actor types. 
+• Fields involved: 
+o actorType (Enum: user, admin, system) 
+o actorId (ObjectId) 
+This design allows a single audit log to reference either a User, an Admin, or a System-
+generated action, without duplicating log structures across multiple collections. 
+It provides flexibility for tracking security events, content moderation actions, and system 
+operations within a unified logging mechanism. 
+ 
+=== PAGE 44 ===
+ 
+● admins (Self-Referencing Polymorphism) 
+The admins collection supports a self-referencing relationship through the createdBy field. 
+• Field involved: 
+o createdBy (Ref → admins._id) 
+This enables hierarchical administrative control, where a Super Admin can create and manage 
+other Admin accounts. The relationship is polymorphic in nature because it allows an entity to 
+reference another entity of the same collection while representing different roles. 
+ 
+● plans (Hybrid System/User Creation Source) 
+The plans collection includes a flexible creation model through the createdBy attribute. 
+• Field involved: 
+o createdBy (Enum: user, ai) 
+This field distinguishes whether a plan was generated directly by the system wizard, modified 
+through AI assistance, or manually created by the user. While not a reference-based 
+polymorphism, it represents behavioral polymorphism at the application logic level. 
+ 
+● ai_conversations (Embedded Polymorphic Messages) 
+The ai_conversations collection stores chat messages using an embedded structure that supports 
+multiple speaker roles. 
+• Fields involved: 
+o messages.role (Enum: user, assistant, system) 
+This allows a single conversation document to contain messages originating from different 
+logical actors, enabling flexible AI-human interaction without splitting data into multiple 
+collections. 
+=== PAGE 45 ===
+4 . Summary  
+ 
+This ERD provides a comprehensive blueprint of the CoreIQ data structure and illustrates how 
+ObjectId-based references, embedded documents, and polymorphic associations work together to 
+support a scalable and flexible NoSQL architecture. The schema is designed to balance 
+performance and maintainability by combining referenced relationships for high-volume data 
+with embedded structures for tightly coupled information. 
+ 
+Polymorphic elements such as actor-based audit logging, hierarchical administrative 
+relationships, and role-based AI conversation records contribute to the extensibility of the system 
+while preserving a clear and organized data model. These design choices allow the platform to 
+evolve without requiring significant structural changes to the database. 
+ 
+Although MongoDB does not enforce relational constraints at the database level, all relationships 
+are strictly controlled within the application layer through Mongoose schemas, validation rules, 
+and reference consistency checks. This approach ensures data integrity while retaining the 
+flexibility advantages of a NoSQL system. 
+=== PAGE 46 ===
+3.6 User Sequence Diagram 
+ 
+Figure 5: User Sequence 
+ 
+ 
+ 
+
+=== PAGE 47 ===
+ 
+      3.7 Admin Sequence Diagram  
+ 
+Figure 6: Admin Sequence 
+ 
+ 
+
+=== PAGE 48 ===
+ 
+Chapter 4: System Design 
+4.1 Introduction  
+The CoreIQ platform is engineered as a sophisticated, AI-enhanced fitness and nutrition 
+ecosystem designed to bridge the gap between rigid planning and adaptive lifestyle guidance. 
+The system architecture utilizes a high-performance, cross-platform technical stack, featuring 
+a React Native mobile application for user interaction and a React-based web dashboard for 
+administrative oversight. These frontends communicate seamlessly with a 
+scalable Node.js and Express backend, forming a robust API-driven architecture. 
+Data persistence is managed by a MongoDB NoSQL database, chosen for its ability to 
+efficiently store and query complex, nested data structures such as multi-week workouts plans 
+and granular activity logs. The platform distinguishes itself through a "Hybrid Intelligence" 
+model, integrating deterministic algorithms for plan generation with state-of-the-art Generative 
+AI services (Google Generative AI / Groq) for contextual guidance and natural language 
+modifications. The overall architecture adheres to the Model-View-Controller (MVC) pattern 
+with a layered service approach, ensuring a clean separation of concerns, high maintainability, 
+and the flexibility to scale independent microservices as the user base grows. 
+4.2 Technologies Used 
+CoreIQ leverages a cutting-edge, JavaScript-everywhere technology stack provided by the 
+MERN ecosystem, enhanced with state-of-the-art Generative AI integration to deliver a 
+premium, intelligent user experience. 
+Core Backend & API: 
+• Node.js: The asynchronous, event-driven JavaScript runtime environment that powers 
+the high-performance backend, enabling non-blocking handling of concurrent API 
+requests. 
+=== PAGE 49 ===
+• Express.js: A minimal and flexible web application framework for Node.js, managing 
+API routing, middleware integration, and request processing with diverse security 
+features. 
+• MongoDB: A NoSQL document database used for its schema agility, storing complex 
+data structures like nested workout plans and granular activity logs efficiently. 
+• Mongoose: The elegant object modeling tool providing schema validation and type 
+casting for MongoDB 
+• Render: The unified cloud hosting platform where the Node.js backend API and database 
+services are deployed, ensuring continuous deployment (CI/CD) and auto-scaling 
+AI & Intelligence: 
+• Google Generative AI SDK: Integrates with Gemini models for the "Chat Companion" 
+and logical plan generation. 
+• Groq SDK: A high-performance interface engine used for ultra-low latency AI responses 
+in real-time chat. 
+• Hugging Face Interface: Utilized for specialized NLP tasks and potential future on-
+device model optimizations 
+Mobile Application (User): 
+• React Native: The cross-platform framework delivering near-native performance on 
+Android and iOS. 
+• Expo: The robust platform for universal React apps, simplifying the build and 
+deployment process. 
+• NativeWind (Tailwind CSS): Utility-first CSS styling adapted for React Native, 
+allowing rapid UI development. 
+• Zustand: A fast, scalable state-management solution used to handle global app state 
+without Redux boilerplate. 
+=== PAGE 50 ===
+• React Navigation: Handles fluid screen transitions and routing history within the mobile 
+app. 
+Web Dashboard (Admin): 
+• React 19 : The latest library version powering the Admin Dashboard with concurrent 
+features. 
+• Vite: A next-generation frontend tool providing lightning-fast build speeds for the web 
+project. 
+• Netlify: The global CDN and hosting platform used to serve the React Web Dashboard, 
+ensuring high availability and edge caching. 
+• Lenis: A specialized library providing buttery-smooth scroll mechanics for a premium 
+"cinematic" dashboard feel. 
+• Recharts: A composable charting library used to visualize user growth and system health 
+analytics. 
+• Framer Motion: Powering the advanced animations and micro-interactions on the web 
+interface. 
+Services & Utilities: 
+• Brevo (formerly Sendinblue): The transactional email service API used for reliable 
+delivery of verification codes and password resets (bypassing standard SMTP port 
+restrictions). 
+• Nodemailer: The Node.js module used to bridge the backend application with the Brevo 
+API. 
+• Lucide React: A consistent, lightweight icon library used across both Web and Mobile 
+for a unified visual language. 
+• Axios:  The promise-based HTTP client managing all reliable data fetching between 
+frontends and the backend API. 
+=== PAGE 51 ===
+• Data-fns: A modern date utility library used for complex time manipulations and relative 
+timestamps (e.g., "Active 2 hours ago"). 
+ 
+  
+4.3 System Modules and Components 
+The CoreIQ platform comprises several deeply interconnected modules, each acting as a 
+functional pillar to support the user's fitness journey: 
+• Authentication & Identity System: 
+• Secure Access: JWT-based session management ensuring stateless, secure API 
+communication. 
+• Profile Management: Handling of biometric data (Height, Weight, Age) and 
+preferences (Imperial/Metric units, Theme settings). 
+• Security Flows: Code-based Email Verification at signup and securely tokenized 
+Password Reset workflows. 
+• Smart Plan Engine: 
+• Wizard Generator: A logic-driven system that constructs 14-90 day schedules 
+based on user goals (Hypertrophy/Weight Loss) and available equipment. 
+• Progress Tracking: A specialized aggregator that calculates completion 
+percentages for both Meals and Workouts in real-time. 
+• Dynamic Adjustment: The capability to modify active plan durations and 
+chaining rules (e.g., starting a new plan immediately after one ends). 
+• Daily Activity & Logging Hub: 
+• Nutrition Tracker: A comprehensive meal logging system with macro-nutrient 
+breakdown (Protein/Carb/Fat) and database of 1000+ foods. 
+=== PAGE 52 ===
+• Workout Logger: A detailed exercise interface supporting Set/Rep recording, and 
+"Smart Fill" history (auto-filling previous weights). 
+• Biometric Monitor: Tracking of daily fluctuating metrics including Water Intake, 
+Sleep Duration, Mood State, and Step counts. 
+ 
+ 
+• AI Companion & Intelligence Layer: 
+• Chat Assistant: A conversational interface capable of answering general fitness 
+queries and navigation requests (e.g., "Take me to settings"). 
+• Plan Modifier: A specialized agent that accepts natural language commands (e.g., 
+"Swap Tuesday's chicken for fish") and executes structured database updates. 
+• Context Awareness: The ability to inject the user's current active plan into the AI 
+prompt context for highly relevant advice. 
+• Content Library Management: 
+• Global Repository: The master database of verified Foods and Workouts 
+available to all users. 
+• User Submissions: A workflow allowing users to contribute new items, which 
+enter a "Pending" state for moderation. 
+• Favorites System: Quick-access bookmarking for frequently used meals and 
+exercises. 
+• Administrative Control Center (Web): 
+• Content Moderation: A dedicated interface for Admins to Review, Approve, or 
+Reject user-submitted content with reason codes. 
+• Team Management: Super Admin tools for creating and deactivating other 
+administrative accounts. 
+=== PAGE 53 ===
+• System Integrity: Visualization of platform health, user growth statistics, and 
+real-time audit logs of critical actions. 
+• Notification & Email Service: 
+• Transactional Messaging: Immediate delivery of critical codes for Verification 
+and Security. 
+• System Alerts: In-app notifications for plan completions or important profile 
+milestones. 
+Chapter 5: Project Software and Implementation 
+ 
+5.1 Introduction  
+This chapter presents an overview of the implementation process of the CoreIQ platform. It 
+highlights the overall software structure and the approach followed in transforming the 
+intelligent fitness requirements into a fully functional ecosystem. The chapter outlines how the 
+distinct frontend interfaces (Mobile and Web) were developed and harmonized with the robust 
+backend API to ensure low-latency performance and real-time data consistency. Additionally, it 
+provides insight into the logical integration of Generative AI services, the system flow, and the 
+structured development lifecycle applied to both the user-facing mobile app and the 
+administrative web dashboard. 
+ 
+5.2 Frontend: Mobile Application (React Native + Expo) 
+ 
+The mobile frontend is developed using React Native with the Expo framework, delivering a 
+high-performance cross-platform experience on both Android and iOS from a single unified 
+codebase. 
+ 
+ 
+=== PAGE 54 ===
+ 
+Design & Architecture 
+• Component-Based UI: Built using functional React components with Hooks 
+management, serving as the View layer. 
+• Native Performance: Utilizes the Hermes engine for optimized JavaScript execution and 
+faster startup times. 
+• Futuristic Aesthetic: Implements a "Dark Mode First" design system with 
+glassmorphism effects, neon accents, and fluid animations for a sci-fi inspired premium 
+feel. 
+Key Functional Features 
+• Secure Authentication: JWT-based login/register flow with email verification codes and 
+secure storage using Expo SecureStore. 
+• Smart Plan Wizard: A multi-step interactive form for generating 14-90 day fitness 
+schedules customized to user goals. 
+• Daily Activity Hub: A central dashboard tracking hydration, sleep, mood, and realtime 
+progress rings for meals and workouts. 
+• AI Chat Interface: A specialized chat screen interacting with the Gemini-powered 
+Assistant for advice and navigation commands. 
+• Workouts & Nutrition: Detailed logging interfaces with "Smart Fill" history, barcode 
+scanning prep (future), and extensive macro tracking. 
+• Offline Capability: Robust local state persistence ensuring core features work even with 
+intermittent connectivity. 
+Core Packages Used 
+• Navigation & Layout: react-navigation/native, expo-router (File-based routing). 
+• State Management: zustand (Global store), tanstack-query (Server state & caching). 
+=== PAGE 55 ===
+• UI & Styling: nativewind (Tailwind), react-native-reanimated, lucide-react-native 
+• Forms & Inputs: react-hook-form, zod (validation), datetimepicker. 
+• Media & Interaction: expo-image, expo-linear-gradient, expo-blur. 
+• HTTP & API: axios (with interceptors). 
+• AI & Intelligence: @google/generative-ai. 
+ 
+User Experience Features 
+• Theme: Deep futuristic dark mode with accessible contrast. 
+• Biometrics: Interactive "Body 3D" model (conceptual representation) for muscle group 
+targeting. 
+• Haptics: Subtle vibration feedback on completion of sets/meals. 
+• Smart Suggestions: Auto-populated weight values based on user history. 
+ 
+5.3 Frontend: Web Application (React 19 + Vite) 
+The web frontend serves as the Administrative Control Center for CoreIQ. It is built as a high-
+performance Single Page Application (SPA) designed for desktop efficiency. 
+UI Frameworks and Tools 
+• React 19: Leveraging the latest concurrent features for non-blocking UI updates. 
+• Vite: Providing instant development server start and optimized production builds. 
+• Tailwind CSS: Enabling rapid, utility-first styling consistent with the mobile app's visual 
+language. 
+• Lenis: Implementing smooth, momentum-based scrolling for a cinematic "Sci-Fi 
+Console" feel. 
+Admin Dashboard Roles 
+=== PAGE 56 ===
+• Super Admin: 
+• Full system oversight including creating/deleting other Admin accounts. 
+• Access to high-level platform health metrics (CPU, Memory, API latency). 
+• Content Moderator: 
+• Review Queue: A Kanban-style board for approving/rejecting user-submitted 
+Foods and Workouts. 
+• Library Management: CRUD rights to the official global database of Exercises 
+and Nutrition items. 
+• User Oversight: Ability to view user profiles and ban accounts violating 
+community standards. 
+ 
+Theme Management 
+• Cinematic Dark Mode: The dashboard enforces a strict "Command Center" dark theme 
+with holographic UI elements to match the brand identity. 
+ 
+5.4 Backend: Web Services (Node.js + Express) 
+The backend architecture is developed in Node.js with Express.js, utilizing Mongoose for 
+ODM, implementing a layered Service-Controller pattern. 
+ 
+System Architecture 
+• Controllers: Handle HTTP requests (req/res), parse inputs, and return standardized 
+JSON responses. 
+• Services: Encapsulate pure business logic (e.g., Plan Generator, AIContextManager), 
+keeping controllers lean. 
+• Models: Strict Mongoose schemas for User, Plan, Meal, Workout, and AuditLog. 
+=== PAGE 57 ===
+• MiddleWare: Handles cross-cutting concerns (Auth validation, Error handling, Rate 
+limiting). 
+Authentication & Security 
+• JWT Strategies: Stateless Bearer token validation for protecting API routes. 
+• Bcrypt: Salted credential hashing for storing passwords securely. 
+• Validation:  Middleware using express-validator to sanitize all incoming request bodies. 
+• Email Security: Code-based verification flow via Brevo API (HTTPS) to bypass 
+insecure SMTP ports. 
+Access Control (RBAC) 
+• MiddleWare Guards: protect (User valid), admin (Role checks), superAdmin (Elevated 
+privilege). 
+• Granular Scopes: Separation of “User Data” (Private) vs “Content Library” 
+(Public/Shared). 
+Database Design (MongoDB + Mongoose) 
+• Hybrid Schema: references (ObjectId) for relations between Users/Plans, but Embedded 
+Documents for daily logs inside Plans to optimize read performance. 
+• Indexing: Strategic indices on frequently queried fields (username, email, planId). 
+ 
+5.5 Backend: Mobile Services (API Layer) 
+The backend exposes a RESTful API optimized for the specific data needs of the React Native 
+client. 
+Mobile-Centric APIs 
+• Auth: POST /api/auth/* (Register, Login, Verify Email, Reset Password). 
+• Plans: POST /api/plans/create (Wizard), GET /api/plans/active (Dashboard Sync). 
+=== PAGE 58 ===
+• Logs: POST /api/meals & POST /api/workouts (Automatic activity recording). 
+• AI: POST /api/ai/chat (Context-aware conversation), POST /api/ai/edit-plan (Natural 
+language logic). 
+• Content: GET /api/foods/search, GET /api/workouts/filter. 
+Business Logic & Data Flow Plan Generation: 
+1. User submits goals (e.g., "Lose Weight, 4 days/week"). 
+2. PlanService calculates TDEE and nutritional targets. 
+3. Algorithm selects templates from Workout library matching the split. 
+4. System generates a 14-Day schedule document and saves to MongoDB. 
+5. Frontend receives the full object and renders the calendar view. 
+AI Interaction: 
+1. User sends "Swap lunch for tacos". 
+2. Backend fetches current Active Plan + User Diet Preferences 
+3. Constructs a dense Prompt with this context and Sends to Gemini. 
+4. Gemini returns JSON instructions ({ action: "replace", meal: "lunch", items: [...] }). 
+5. PlanController executes the database update and returns the new state. 
+ 
+5.6 Summary: Data Flow and Integration 
+The data flow of CoreIQ is designed for near-real-time synchronization between the "Smart 
+System" and the user's daily actions. 
+User-Facing Workflows 
+• Activity Logging: When a user logs a meal, the app optimistically updates the local UI 
+(Progress Rings) while asynchronously syncing with the MongoDB backend. 
+=== PAGE 59 ===
+• AI Assistance: The "Hybrid Intelligence" model ensures that while AI handles 
+the reasoning (chat, advice), the core system handles the execution (database writes, 
+math), ensuring data integrity is never hallucinated. 
+Admin Operations 
+• Content Loop: User submissions flow into a "Pending" collection. Admins review these 
+via the Web Dashboard. upon Approval, items are atomically moved to the public "Global 
+Library" collection, instantly becoming available to all mobile users via search. 
+• Integrity Monitoring: Real-time aggregation pipelines provide the Admin with live stats 
+on "Active Users Today" and "Total Workouts Completed," visualizing the heartbeat of 
+the platform. 
+Chapter 6: Testing Results Samples 
+This chapter presents a detailed overview of the functional testing results and user interface 
+behavior across the various modules of the CoreIQ platform. Functional testing was carried out 
+systematically for each defined user role, including Administrators using the web dashboard and 
+End Users accessing the mobile application. The objective of this testing phase was to ensure 
+that the system operates reliably and consistently with its intelligent design specifications. 
+Each platform component was validated using functional flow tables and real interface samples. 
+Through this process, the chapter highlights the correctness of system operations, the 
+effectiveness of role-based workflows, and the practical implementation of the Hybrid 
+Intelligence interaction model across the platform. 
+The testing strategy focused on verifying core functionality, maintaining data integrity, enforcing 
+role-based access control (RBAC), ensuring reliable AI responses, and evaluating overall UI and 
+UX feedback. For clarity and consistency, each subsection in this chapter includes the following 
+elements: 
+• A visual reference, such as a user interface figure or screenshot 
+• A functional flow table describing the behavior of the tested component 
+=== PAGE 60 ===
+• A description of the expected system behavior and the actual responses observed during 
+testing 
+Testing begins with the Authentication System, where secure access mechanisms are validated, 
+including email and password registration as well as email verification codes. After 
+authentication, the testing process continues with an in-depth evaluation of the platform’s core 
+modules. 
+The administrative section focuses on content moderation for foods and workouts, user 
+management, and system health analytics. These features are accessible exclusively through the 
+React-based web dashboard and are restricted to authorized administrators. On the user side, 
+testing concentrates on the React Native mobile application, examining the Smart Plan Wizard, 
+daily meal and workout logging, biometric data tracking, and interaction with the AI Chat 
+Companion. 
+In addition, the AI and Intelligence System is analyzed to assess the accuracy and reliability of 
+the generative AI models, including Gemini and Groq. This evaluation covers both general 
+fitness-related queries and advanced commands, such as modifying existing plans through 
+actions like swapping meals. The Mobile Application Testing section further evaluates 
+responsive layout behavior, touch-optimized navigation, and local state persistence to ensure 
+smooth usage even in low-connectivity environments. 
+The chapter also validates the Content Library Integration by examining the workflow of user-
+submitted content as it transitions from a pending state to approved global availability. This 
+process ensures that the community-driven database remains secure, moderated, and consistent 
+across all users. 
+Overall, this structured testing approach confirms that CoreIQ meets its functional requirements 
+while delivering a secure, consistent, and personalized user experience. The testing results 
+presented in this chapter allow stakeholders to evaluate the platform’s readiness for real-world 
+deployment and its ability to scale effectively, providing confidence in its capability to handle 
+complex fitness logic and intelligent real-time interactions. 
+ 
+=== PAGE 61 ===
+6.1 Registration & Onboarding Module 
+This section validates the onboarding capability of the mobile application. The testing focused on 
+the Create Account form and the mandatory Identity Verification step required before account 
+activation. 
+ 
+Figure 7: Create Account, Verify Email 
+ 
+
+=== PAGE 62 ===
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+Full Name Field Input Field Captures the user’s display 
+name for personalization. 
+Username Field Input Field Validated for uniqueness to 
+identify the user. 
+Email Address Field Input Field Validates a properly formatted 
+email address. 
+Birthdate Picker Date Picker Ensures valid age input for 
+fitness calculations. 
+Gender Selector Toggle Button Mandatory selection used in 
+TDEE calculations. 
+Password Field Password Field Requires a minimum of eight 
+characters. 
+Confirm Password Password Field Confirm password consistency 
+Visibility Toggle Icon Button Toggles password text 
+visibility. 
+Register Button Action Button Validates inputs and initiates 
+account creation. 
+ 
+Table 10: User Registration Flow 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ Code Input  Numeric Input Accepts a 6-digit email 
+verification code. 
+Verify Input Action Button Submits the code and activates 
+the account on success. 
+Table 11:  Email Verification Flow 
+=== PAGE 63 ===
+6.2 Authentication & Security Module 
+This section validates the secure entry for existing users 
+ 
+Figure 8: Login Screen 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ Email  Input Field Accepts the user’s email 
+identifier. 
+Password Field Password Field Masked input for secure 
+credential entry. 
+Forgot Password Link Button Redirects to the password 
+recovery process. 
+Login Button Action Button Authenticates credentials and 
+initiates the user session. 
+Table 12: User Login Flow 
+
+=== PAGE 64 ===
+ 
+6.2.1 Password Recovery Flow 
+ 
+Figure 9: Forgot Password, Confirm Code, Reset Password 
+ 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ Email Input  Input Field Submits the user’s email for 
+password recovery. 
+Code Confirmation Numeric Input Verifies identity before 
+allowing password reset. 
+New Password Password Field Updates the user’s password 
+securely in the database. 
+ 
+Table 13: Reset Password Flow 
+ 
+
+=== PAGE 65 ===
+6.3 User Mobile Application – Functional Testing & Flow Tables 
+This section details the primary modules of the mobile application, focusing on the user's daily 
+interaction flow. It covers the central Dashboard for holistic status tracking, the Smart Plan 
+Wizard for generating intelligent fitness schedules, and the Activity Hubs for logging nutrition 
+and workouts. 
+6.3.1 User Dashboard Page 
+ 
+Table 14: User Dashboard Page 
+
+=== PAGE 66 ===
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ User Header Card  Header Displays a personalized 
+greeting, user avatar, and date 
+navigation. 
+ 
+Smart Analysis AI Widget Provides access to AI-
+generated calorie and weight 
+insights. 
+Nutrition’s Card Status Card Shows consumed calories 
+relative to the daily TDEE 
+target. 
+ 
+Mind & Sleep Dynamic Card Reflects mood and sleep data 
+with dynamic visual 
+indicators. 
+Activity Card Fitness Card Displays step count and 
+workout completion status. 
+Water Card Tracker Card Logs daily water intake 
+against the hydration goal. 
+Physical Stats List Item Allows updating weight and 
+height through interactive 
+modals. 
+ 
+Goals & Activity Section List Item Enables adjustment of 
+activity level and weight 
+objectives. 
+ 
+Bottom Navigation Tab Bar Provides persistent navigation 
+between core application 
+modules. 
+ 
+Table 15: User Dashboard 
+=== PAGE 67 ===
+6.3.2 Smart Plan Wizard 
+ 
+Figure 10:  Smart Plan Creation Flow 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ Step 1: Naming  Header Allows the user to assign a 
+custom name to the plan. 
+ 
+Step 2: Diet Style Selection Grid Enables selection of a nutrition 
+strategy, with a recommended 
+option highlighted 
+Step 3: Workout Routine Dynamic Filter 
+Filters workout plans based 
+on selected training 
+frequency. 
+ 
+ 
+Step 4: Scheduling Date Configuration Configures plan duration and 
+start date. 
+Progress Bar UI Element Indicates wizard completion 
+progress. 
+ 
+Table 16: Smart Plan Wizard 
+
+=== PAGE 68 ===
+6.3.3 Active Plan Management Hub 
+ 
+Figure 11: Plans Screen 
+
+=== PAGE 69 ===
+ 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ Plan Header  Header Displays the plan name and 
+active status. 
+ 
+Quick Actions Selection Grid Provides access to plan 
+controls and AI assistance. 
+ 
+Calendar Strip Dynamic Filter Enables weekly date 
+navigation 
+ 
+Daily Overview Date Configuration Shows daily calories, 
+workouts, and macro progress. 
+Day Indicator Summay Card 
+Displays the current plan 
+day and date. 
+ 
+ 
+Workouts Section Collapsible List Lists scheduled workouts and 
+set details. 
+Meals Section Collapsible List Lists scheduled Meals and 
+macro details. 
+ AI Assist  Floating Action Smart swaping meals/Workout  
+Add Button Floating Action Adds workouts or meals to the 
+selected day. 
+Table 17: Active Plan Management Hub Components 
+ 
+ 
+ 
+ 
+=== PAGE 70 ===
+6.3.4 Daily Activity Hub (Meals & Workouts Execution) 
+ 
+Figure 12: Meals Screen 
+
+=== PAGE 71 ===
+ 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+  
+Date Navigation 
+ 
+Header Enables navigation between 
+daily logs. 
+ 
+ 
+Search Bar 
+ 
+Input Field Allows searching for food 
+items. 
+ 
+Daily Nutrition  
+Summary Card Displays consumed versus 
+target calories and macros. 
+ 
+Meal Sections Grouped Lists Organizes meals by type with calorie 
+totals. 
+ 
+Food Items 
+ 
+Checkable Cards Shows food details and macro 
+values. 
+ 
+ 
+Add Item Button Contextual Action Adds food items to selected meals. 
+Completion Toggle Checkbox Marks food items as consumed. 
+Table 18: Daily Meals Tracking  
+ 
+ 
+ 
+=== PAGE 72 ===
+ 
+Figure 13: Workouts Screen 
+
+=== PAGE 73 ===
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+  
+ 
+Date Navigation 
+ 
+ 
+Header 
+Enables navigation between 
+workout days. 
+ 
+ 
+ 
+Search Bar 
+ 
+ 
+Input Field Allows searching for workouts. 
+ 
+Daily Progress Summary Card 
+Displays exercise completion 
+status. 
+ 
+Muscle Group 
+Headers 
+Section Dividers Groups exercises by targeted muscle group. 
+ 
+ 
+Exercise Cards 
+ 
+ 
+Interactive Items Displays exercise details and set 
+information. 
+ 
+ 
+Completion Toggle Checkbox Marks exercises as completed and updates 
+progress. 
+Create New Link Text Action Allows creation of custom workouts. 
+Table 19: Daily Workouts Tracking 
+=== PAGE 74 ===
+6.4 AI Chat Companion 
+ 
+Figure 14: AI Screen 
+ 
+
+=== PAGE 75 ===
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ 
+ 
+AI Coach 
+Header 
+ 
+ 
+Title Bar Displays the AI Coach  interface 
+and connection status. 
+ 
+ 
+User Messages 
+ 
+Chat Bubbles 
+(Right) 
+Shows user messages aligned to 
+the right. 
+ 
+ 
+AI Responses 
+ 
+Chat Bubbles 
+(Left) Displays AI-generated responses 
+with visual identification. 
+ 
+Stats Integration Text Field Uses user profile and nutrition data 
+for personalized replies. 
+ 
+Message Input 
+ 
+Icon Element Allows users to submit messages 
+to the AI assistant. 
+ 
+ 
+AI Avatar Checkbox Visually identifies AI-generated 
+responses. 
+Table 20: AI 
+ 
+ 
+=== PAGE 76 ===
+6.5 Administration Web Portal 
+The Administration Web Portal functions as the central control hub of the CoreIQ platform. It 
+enables administrators to monitor system activity, manage users, and curate the workout and 
+meal content libraries. The portal is implemented using React and TypeScript and includes a Live 
+Activity feed supported by system-wide audit logging, allowing administrators to maintain 
+continuous visibility over platform operations. 
+ 
+6.5.1 Admin Dashboard & Statistics 
+The Admin Dashboard provides an immediate overview of platform performance and usage. Key 
+metrics, such as total athletes, active plans, and pending content approvals, are displayed 
+prominently to give administrators instant insight into system status. In addition, the Live 
+Activity feed (Figure 6.5.1) presents real-time updates of critical events, including user 
+registrations, logins, and plan activations, enabling efficient monitoring of platform health and 
+user engagement. 
+ 
+ 
+Figure 15: Admin Dashboard 
+ 
+
+=== PAGE 77 ===
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+ 
+ 
+Sidebar Navigation 
+ 
+ 
+Menu Panel Provides access to core administrative 
+modules. 
+ 
+ 
+ 
+Overview Cards 
+ 
+ 
+Metric Widgets 
+ 
+ 
+Displays key platform statistics. 
+ 
+ 
+ 
+Live Activity Feed 
+ 
+ 
+Real-time List 
+ 
+Shows recent system events with timestamps. 
+ 
+ 
+ 
+Knowledge Base 
+ 
+ 
+Summary Panel 
+ 
+ 
+Displays total counts of workouts and meals. 
+User Profile Footer Widget 
+Shows admin details and sign-out option. 
+ 
+ 
+Table 21: Admin Dashboard 
+=== PAGE 78 ===
+6.5.2 User Management Page 
+The User Management page, referred to as the Athletes Directory, allows administrators to 
+search, view, and manage registered users. The interface presents essential profile information, 
+including physical attributes and calculated metabolic targets. This centralized view enables 
+support and administrative staff to efficiently assist users, verify profile configurations, and 
+monitor activity status. 
+ 
+Figure 16: Athletes Directory 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+Directory Header Title & Search Shows title and search. 
+ 
+Athlete Row Data Table Row Represents an individual user profile. 
+ 
+Physical Stats Data Column Shows weight, height, and gender 
+information. 
+ 
+Metabolic Targets Data Column Displays calculated calorie and protein 
+targets. 
+Activity Status Status Badge Indicates activity level and account join 
+date. 
+ 
+ 
+Table 22: Athletes Directory 
+
+=== PAGE 79 ===
+6.5.3 Content Moderation Page 
+The Content Moderation module supports the controlled management of workouts and meals to 
+ensure data accuracy and safety across the platform. Within the Workouts Library, administrators 
+can create, review, and approve exercises. Content can be filtered by category or muscle group, 
+allowing clear separation between official content and user-submitted entries. 
+ 
+Figure 17: Workouts Library 
+ 
+Component 
+ 
+ 
+Type 
+ 
+ 
+Description 
+ 
+Library Tabs Toggle Controls 
+Switches content views. 
+ 
+ 
+Filter Controls Dropdown Menu Filters content by category or muscle 
+group. 
+ 
+Add Button Action Button 
+Opens the form for creating new content. 
+ 
+Content Table Data Grid Lists items with management actions. 
+Table 23: Workout Library 
+ 
+
+=== PAGE 80 ===
+Chapter 7: General Conclusion and Future Recommendations 
+ 
+In conclusion, this senior project, CoreIQ, successfully addresses the limitations of traditional 
+fitness systems that rely on static plans and disconnected tracking tools. Instead of generic, one-
+size-fits-all approaches, CoreIQ introduces an intelligent and adaptive platform designed to meet 
+the evolving needs of modern athletes. By unifying nutrition tracking, workout planning, and 
+performance monitoring within a single ecosystem, the platform provides users with a structured 
+and data-driven approach to managing their health. 
+ 
+CoreIQ functions as a personalized digital assistant for fitness management. Nutritional targets 
+dynamically adapt based on daily activity, workout plans evolve according to user performance, 
+and AI-driven insights help simplify complex health data into actionable guidance. This 
+integrated approach reduces manual effort while improving accuracy and consistency across the 
+user’s fitness journey. 
+ 
+The project demonstrates how modern technologies can make advanced fitness coaching more 
+accessible. Through real-time metabolic calculations, seamless synchronization between mobile 
+and web platforms, and a clear, intuitive user interface, CoreIQ establishes a solid foundation for 
+scalable digital health solutions. The system emphasizes user autonomy, precision, and long-term 
+sustainability, enabling individuals to take informed control of their physical well-being with 
+confidence. 
+ 
+ 
+ 
+ 
+ 
+=== PAGE 81 ===
+ 
+7.1 Future Work 
+While CoreIQ delivers a comprehensive and functional platform, several enhancements can 
+further extend its capabilities and impact: 
+1. Wearable Device Integration 
+Integrating with platforms such as Apple Health, Google Fit, and Garmin would enable 
+real-time synchronization of activity, sleep, and energy expenditure data. This would 
+allow more precise automatic adjustments of caloric targets and recovery insights. 
+2. AI Computer Vision for Nutrition and Training 
+Incorporating computer vision could enable calorie estimation from food images and 
+real-time exercise form analysis, reducing reliance on manual data entry and improving 
+training safety. 
+3. Trainer Marketplace and Professional Portal 
+Expanding the administrative interface into a dedicated trainer portal would allow 
+certified coaches to manage multiple clients, assign personalized plans, and monitor 
+progress remotely. 
+4. Social Features and Gamification 
+Introducing challenges, leaderboards, and social sharing features could enhance 
+motivation and accountability through community engagement. 
+5. Offline Mode Support 
+Implementing a local-first database architecture would ensure uninterrupted app usage in 
+low-connectivity environments, with seamless data synchronization once a connection is 
+restored. 
+6. Advanced Micronutrient Tracking 
+Extending the nutrition system to include vitamins, minerals, and hydration metrics 
+would provide a more comprehensive view of overall nutritional health. 
+=== PAGE 82 ===
+7. Multi-language Localization 
+Adding internationalization support for multiple languages and regional measurement 
+systems would improve accessibility and usability for a global audience. 
+References 
+Research References: 
+[1] Topol, E. J. (2019). Deep Medicine: How Artificial Intelligence Can Make Healthcare 
+Human Again. Basic Books. 
+[2] Hekler, E. B., et al. (2013). “Mind the Gap: Community-Based Participatory Research in 
+Mobile Health.” Translational Behavioral Medicine, 3(3), 243–248. 
+[3] Fogel, D. S., & Kvedar, J. C. (2018). “Artificial Intelligence Powers Digital Medicine.” npj 
+Digital Medicine, 1, 5. https://doi.org/10.1038/s41746-017-0012-2 
+Technical References 
+[4] React Native Documentation. https://reactnative.dev/ 
+[5] Expo Documentation (SDK 50). https://docs.expo.dev/ 
+[6] MongoDB Manual. https://www.mongodb.com/docs/manual/ 
+[7] Tailwind CSS Documentation. https://tailwindcss.com/docs 
+[8] React Native Reanimated Documentation. https://docs.swmansion.com/react-native-
+reanimated/ 
+Industry Case Studies 
+[9] MyFitnessPal – Calorie Counter & Diet Tracker. https://www.myfitnesspal.com/ 
+[10] Hevy – Workout Tracker & Planner. https://www.hevyapp.com/ 
+[11] Strong – Workout Tracker. https://www.strong.app/ 
+AI and Data Sources 
+[12] OpenAI API Documentation. https://platform.openai.com/docs/ 
+[13] USDA FoodData Central. https://fdc.nal.usda.gov/ 
+[14] OpenFoodFacts Database. https://world.openfoodfacts.org/ 
+ 
